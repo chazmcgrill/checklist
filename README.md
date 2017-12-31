@@ -1,2 +1,2 @@
 # checklist
-react checklist component
+Checklist component created using react.
