@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ChecklistForm from './ChecklistForm';
 import ChecklistItem from './ChecklistItem';
 
+let nextId = 2;
+
 class Checklist extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,7 @@ class Checklist extends Component {
         {id: 1, content: "cook dinner", completed: true},
       ]
     }
+    this.addListItem = this.addListItem.bind(this);
   }
 
   toggleItem(id) {
@@ -20,6 +23,12 @@ class Checklist extends Component {
     this.setState({list});
   }
 
+  addListItem(text) {
+    const newItem = {id: nextId, content: text, completed: false};
+    nextId++;
+    this.setState({list: [...this.state.list, newItem]});
+  }
+
   render() {
     const list = this.state.list.map(item => (
       <ChecklistItem onToggle={this.toggleItem.bind(this, item.id)} content={item} key={item.id}/>
@@ -27,7 +36,7 @@ class Checklist extends Component {
     return (
       <div>
         <h1>Checklist</h1>
-        <ChecklistForm />
+        <ChecklistForm addItem={this.addListItem}/>
         <ul>
           {list}
         </ul>
