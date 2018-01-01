@@ -29,9 +29,19 @@ class Checklist extends Component {
     this.setState({list: [...this.state.list, newItem]});
   }
 
+  deleteItem(id) {
+    let list = this.state.list.filter(item => item.id !== id);
+    this.setState({list});
+  }
+
   render() {
     const list = this.state.list.map(item => (
-      <ChecklistItem onToggle={this.toggleItem.bind(this, item.id)} content={item} key={item.id}/>
+      <ChecklistItem
+        onToggle={this.toggleItem.bind(this, item.id)}
+        onDelete={this.deleteItem.bind(this, item.id)}
+        content={item}
+        key={item.id}
+      />
     ));
     return (
       <div>
