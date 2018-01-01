@@ -4,7 +4,7 @@ class ChecklistForm extends Component {
   render() {
     return (
       <div>
-        <input type="text"/>
+        <input type="text" placeholder="new list item"/>
         <button>Add</button>
       </div>
     )
