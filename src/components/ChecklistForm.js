@@ -14,21 +14,23 @@ class ChecklistForm extends Component {
     this.setState({text: e.target.value});
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     this.props.addItem(this.state.text);
+    this.setState({text: ''});
   }
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleSubmit} className="checklist-form">
         <input
           type="text"
           placeholder="new list item"
           value={this.state.text}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleSubmit}>Add</button>
-      </div>
+        <button type="submit">+</button>
+      </form>
     )
   }
 }

@@ -5,6 +5,9 @@ ul
   list-style-type: none
   padding: 0
 
+li, button, .delete-button
+  cursor: pointer
+
 li div
   display: inline-block
   height: 12px
@@ -18,3 +21,16 @@ li div
 
 li:hover .delete-button
   display: inline-block
+
+.checklist-form
+  input, button
+    font-size: 1rem
+    background: none
+    border: none
+    outline: none
+
+  input
+    padding: 5px 0
+
+    &:focus
+      border-bottom: 2px solid black
