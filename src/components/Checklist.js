@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import ChecklistForm from './ChecklistForm';
 import ChecklistItem from './ChecklistItem';
 
-let nextId = 2;
+let nextId = 3;
 
 class Checklist extends Component {
   constructor(props) {
     super(props);
     this.state = {
       list: [
-        {id: 0, content: "clean house", completed: false},
-        {id: 1, content: "cook dinner", completed: true},
+        {id: 0, content: "fix car", completed: false},
+        {id: 1, content: "exercise", completed: true},
+        {id: 2, content: "pay bills", completed: false}
       ]
     }
     this.addListItem = this.addListItem.bind(this);
@@ -30,7 +31,7 @@ class Checklist extends Component {
   }
 
   deleteItem(id) {
-    let list = this.state.list.filter(item => item.id !== id);
+    const list = this.state.list.filter(item => item.id !== id);
     this.setState({list});
   }
 
@@ -44,8 +45,8 @@ class Checklist extends Component {
       />
     ));
     return (
-      <div>
-        <h1>Checklist</h1>
+      <div className="container">
+        <h2>checklist</h2>
         <ChecklistForm addItem={this.addListItem}/>
         <ul>
           {list}

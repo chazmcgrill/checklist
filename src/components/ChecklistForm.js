@@ -23,13 +23,13 @@ class ChecklistForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="checklist-form">
+        <button type="submit">+</button>
         <input
           type="text"
           placeholder="new list item"
           value={this.state.text}
           onChange={this.handleChange}
         />
-        <button type="submit">+</button>
       </form>
     )
   }
